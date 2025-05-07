@@ -240,8 +240,8 @@
         }
         
         .feature-icon {
-            width: 80px;
-            height: 80px;
+            width: 96px;  /* Increased from 80px to 96px */
+            height: 96px; /* Increased from 80px to 96px */
             margin: 0 auto 1.5rem;
             padding: 1.2rem;
             background: var(--primary-light);
@@ -249,6 +249,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        
+        .feature-icon-img {
+            width: 90px;  /* Increased from 70px to 90px */
+            height: 90px; /* Increased from 70px to 90px */
+            object-fit: contain;
+            padding: 5px; /* Added padding to prevent touching the circle edges */
         }
         
         .feature h3 {
@@ -426,7 +433,7 @@
             <div class="features">
                 <div class="feature">
                     <div class="feature-icon">
-                        <img src="/api/placeholder/60/60" alt="Imagination icon">
+                        <img src="images/imaginationicon.png" alt="Imagination as Apex Capability" class="feature-icon-img">
                     </div>
                     <h3>Imagination as Apex</h3>
                     <p>We develop what AI cannot: vision, foresight, and human creativity that drives innovation. Our workshops strengthen the uniquely human capabilities that complement AI systems.</p>
@@ -434,7 +441,7 @@
                 
                 <div class="feature">
                     <div class="feature-icon">
-                        <img src="/api/placeholder/60/60" alt="Human-AI Partnership icon">
+                        <img src="images/human_ai_collab.png" alt="Human-AI Partnership" class="feature-icon-img">
                     </div>
                     <h3>Human-AI Partnership</h3>
                     <p>AI avatars that mentor not monitor, supporting but never replacing human guidance. We create balanced partnerships that enhance human potential rather than diminishing it.</p>
@@ -442,7 +449,7 @@
                 
                 <div class="feature">
                     <div class="feature-icon">
-                        <img src="/api/placeholder/60/60" alt="Enterprise-ready icon">
+                        <img src="images/enterprise_ready.png" alt="Enterprise-ready Solutions" class="feature-icon-img">
                     </div>
                     <h3>Enterprise-ready</h3>
                     <p>Our solutions integrate seamlessly with BambooHR, Lattice, Workday, and SAP for frictionless workflows. Flexible delivery options support all levels of digital maturity in your organization.</p>

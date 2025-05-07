@@ -166,7 +166,7 @@
         .workshop-icon {
             width: 100px;
             height: 100px;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.8); /* Changed from 0.2 to 0.8 for 80% white */
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -394,6 +394,12 @@
                 max-width: 100%;
             }
         }
+
+        .workshop-icon-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
     </style>
 </head>
 <body>
@@ -426,7 +432,7 @@
             <div class="workshop">
                 <div class="workshop-header">
                     <div class="workshop-icon">
-                        <img src="/api/placeholder/60/60" alt="AllStarTeams icon">
+                        <img src="images/all-star-teams-logo-square.png" alt="AllStarTeams Workshop Logo" class="workshop-icon-img">
                     </div>
                     <div class="workshop-title">
                         <h3>AllStarTeams Workshop</h3>
@@ -487,7 +493,7 @@
             <div class="workshop">
                 <div class="workshop-header">
                     <div class="workshop-icon">
-                        <img src="/api/placeholder/60/60" alt="Imaginal Agility icon">
+                        <img src="images/imaginal_agility_logo_sq.png" alt="Imaginal Agility Workshop Logo" class="workshop-icon-img">
                     </div>
                     <div class="workshop-title">
                         <h3>Imaginal Agility Workshop</h3>
