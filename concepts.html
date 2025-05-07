@@ -55,19 +55,12 @@
             display: flex;
             align-items: center;
             text-decoration: none;
-            color: var(--text);
-            font-weight: 800;
-            gap: 0.5rem;
         }
         
         .logo-img {
-            width: 40px;
-            height: auto;
-            margin-right: 0.5rem;
-        }
-        
-        .logo-text {
-            line-height: 1.2;
+            width: auto;
+            height: 48px; /* Increased from 40px to 48px (20% larger) */
+            display: block;
         }
         
         .nav-links {
@@ -111,8 +104,9 @@
         
         .page-header h1 {
             font-size: 3rem;
-            margin-bottom: 1.5rem;
-            font-weight: 800;
+            color: var(--white);
+            padding: 10rem 0 6rem;
+            text-align: center;
         }
         
         .page-header p {
@@ -120,6 +114,8 @@
             max-width: 700px;
             margin: 0 auto;
             opacity: 0.9;
+            text-align: center;
+            margin-bottom: 4rem;
         }
         
         section {
@@ -146,6 +142,9 @@
         }
         
         .concept-section {
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
             margin-bottom: 6rem;
         }
         
@@ -482,7 +481,7 @@
         <div class="container">
             <nav>
                 <a href="index.html" class="logo">
-                    <img src="images/heliotrope-logo.png" alt="Heliotrope Imaginal Logo" class="logo-img">
+                    <img src="images/HI_logo_horiz.png" alt="Heliotrope Imaginal Logo" class="logo-img">
                 </a>
                 <div class="nav-links">
                     <a href="index.html">Home</a>
@@ -509,7 +508,6 @@
                     <h2>HaiQ (Human-AI Quotient)</h2>
                     <p>As AI capabilities expand, the competitive edge lies in effectively partnering with it. HaiQ measures how well individuals and teams engage with AI while maintaining essential human capacities.</p>
                 </div>
-                
                 <div class="concept-content">
                     <p>HaiQ tracks the quality of interaction between human imagination and AI augmentation across five dimensions. It is not a static score—it's a dynamic diagnostic embedded in our workshops through guided prompts, self-assessments, and team analytics.</p>
                     
@@ -519,34 +517,26 @@
                                 <h3 class="dimension-title">Imaginative Agency</h3>
                                 <p>Using AI to expand, not replace, personal vision and creativity. This dimension measures how effectively individuals maintain their creative direction while leveraging AI tools to enhance their capabilities.</p>
                             </div>
-                            
                             <div class="dimension-card">
                                 <h3 class="dimension-title">Reflective Depth</h3>
                                 <p>Maintaining self-awareness in AI-mediated workflows. This gauges one's ability to step back from technology, assess its influence, and maintain a critical perspective on AI-generated content and suggestions.</p>
                             </div>
-                            
+                        </div>
+                        <div class="column">
                             <div class="dimension-card">
                                 <h3 class="dimension-title">Collaborative Intelligence</h3>
                                 <p>Blending human empathy with AI pattern recognition. This measures how well teams integrate AI insights with uniquely human perspectives to create solutions neither could develop alone.</p>
                             </div>
-                        </div>
-                        
-                        <div class="column">
-                            <div class="dimension-card">
-                                <h3 class="dimension-title">Purpose Alignment</h3>
-                                <p>Ensuring AI tools support meaningful, values-aligned work. This evaluates how well individuals and organizations keep AI systems oriented toward objectives that matter, rather than being led by what technology makes possible.</p>
-                            </div>
-                            
                             <div class="dimension-card">
                                 <h3 class="dimension-title">Adaptability</h3>
                                 <p>Responding to evolving AI contexts with coherence, not overload. This dimension tracks resilience and cognitive flexibility when navigating rapidly changing technological environments.</p>
                             </div>
-                            
-                            <div style="margin-top: 3rem; background: var(--primary-light); border-radius: 15px; padding: 2rem; color: var(--primary);">
-                                <h3 style="margin-bottom: 1rem; font-size: 1.4rem; text-align: center;">Why HaiQ Matters</h3>
-                                <p>HaiQ helps organizations evaluate not just <em>what</em> AI is doing but <em>how well humans are growing alongside it</em>. This balanced approach ensures technology augments rather than diminishes human potential and creativity.</p>
-                            </div>
                         </div>
+                    </div>
+                    
+                    <div style="margin-top: 3rem; background: var(--primary-light); border-radius: 15px; padding: 2rem; color: var(--primary);">
+                        <h3 style="margin-bottom: 1rem; font-size: 1.4rem; text-align: center;">Why HaiQ Matters</h3>
+                        <p>HaiQ helps organizations evaluate not just <em>what</em> AI is doing but <em>how well humans are growing alongside it</em>. This balanced approach ensures technology augments rather than diminishes human potential and creativity.</p>
                     </div>
                 </div>
             </div>
@@ -560,78 +550,43 @@
                     <h2>ROI 2.0 (Return on Imagination)</h2>
                     <p>ROI 2.0 reframes imagination as an enterprise asset — measurable, actionable, and tied directly to performance.</p>
                 </div>
-                
                 <div class="concept-content">
                     <p>What differentiates Heliotrope is not just originality — it's practicality. We have devised a new category: the ROI 2.0 platform — where imagination becomes a measurable, reportable enterprise asset.</p>
                     
                     <div class="pathway-section">
                         <h3 class="pathway-title">Heliotrope Imaginal delivers ROI 2.0 through two distinct yet complementary pathways:</h3>
-                        
                         <div class="pathway-cards">
                             <div class="pathway-card">
                                 <h4 class="pathway-card-title">AllStarTeams (AST)</h4>
                                 <p>Develops imagination through the lens of individual and collective strengths. Participants build awareness of their <strong>Apex Strengths</strong>, articulate their <strong>Future Selves and Vision</strong>, and align around shared purpose — culminating in team clarity and strategic coherence.</p>
                             </div>
-                            
                             <div class="pathway-card">
                                 <h4 class="pathway-card-title">Imaginal Agility (IA)</h4>
                                 <p>Trains imagination as a neurocognitive capability that fuels Curiosity, Empathy, Creativity, and Courage. These five Capabilities (5Cs) are exercised through the <strong>Ladder of Imagination</strong> (five developmental rungs) and applied through five team-based <strong>Shared Adaptive Outcome (SAO)</strong> exercises.</p>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="statistics-section">
-                        <h3 class="statistics-title">The Business Impact of Imagination</h3>
-                        <p>Organizations that increase the 5Cs starting with Imagination Training see measurable improvements:</p>
-                        
-                        <div class="statistics-grid">
-                            <div class="statistic">
-                                <div class="statistic-number">1.8×</div>
-                                <div class="statistic-label">More likely to report stronger financial results</div>
-                            </div>
-                            
-                            <div class="statistic">
-                                <div class="statistic-number">1.6×</div>
-                                <div class="statistic-label">More likely to provide meaningful work</div>
-                            </div>
-                            
-                            <div class="statistic">
-                                <div class="statistic-number">1.4×</div>
-                                <div class="statistic-label">More likely to create broad stakeholder value</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="implementation-section">
-                        <h3 class="implementation-title">ROI 2.0 in Practice</h3>
-                        <p>Together, AST and IA generate a full-spectrum developmental arc — from individual insight to team integration — tracked through real-time diagnostics:</p>
-                        
-                        <div class="feature-cards">
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <img src="/api/placeholder/50/50" alt="Star Cards icon">
-                                </div>
-                                <h4 class="feature-title">Star Cards</h4>
-                                <p>Visual tools that map individual strengths and development areas, creating clear pathways for personal growth.</p>
-                            </div>
-                            
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <img src="/api/placeholder/50/50" alt="Vision Maps icon">
-                                </div>
-                                <h4 class="feature-title">Vision Maps</h4>
-                                <p>Structured frameworks for articulating future aspirations and connecting them to present actions.</p>
-                            </div>
-                            
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <img src="/api/placeholder/50/50" alt="Team Fusion Maps icon">
-                                </div>
-                                <h4 class="feature-title">Team Fusion Maps</h4>
-                                <p>Dynamic visualizations of how individual strengths integrate to create team capabilities greater than the sum of their parts.</p>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="statistics-section">
+        <div class="container">
+            <h3 class="statistics-title">The Business Impact of Imagination</h3>
+            <p>Organizations that increase the 5Cs starting with Imagination Training see measurable improvements:</p>
+            <div class="statistics-grid">
+                <div class="statistic">
+                    <div class="statistic-number">1.8×</div>
+                    <div class="statistic-label">More likely to report stronger financial results</div>
+                </div>
+                <div class="statistic">
+                    <div class="statistic-number">1.6×</div>
+                    <div class="statistic-label">More likely to provide meaningful work</div>
+                </div>
+                <div class="statistic">
+                    <div class="statistic-number">1.4×</div>
+                    <div class="statistic-label">More likely to create broad stakeholder value</div>
                 </div>
             </div>
         </div>
@@ -643,7 +598,6 @@
                 <h2>Enterprise Implementation</h2>
                 <p>Heliotrope Imaginal's platform architecture is designed to meet enterprise standards with minimal friction and maximum adaptability.</p>
             </div>
-            
             <div class="feature-cards">
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -652,7 +606,6 @@
                     <h4 class="feature-title">Universal Accessibility</h4>
                     <p>Supports all levels of digital maturity — from paper-based workshops to fully AI-augmented mobile delivery.</p>
                 </div>
-                
                 <div class="feature-card">
                     <div class="feature-icon">
                         <img src="/api/placeholder/50/50" alt="Scalable Deployment icon">
@@ -660,7 +613,6 @@
                     <h4 class="feature-title">Scalable Deployment</h4>
                     <p>Enables progression from human-led to AI-supported facilitation at team, department, or enterprise scale.</p>
                 </div>
-                
                 <div class="feature-card">
                     <div class="feature-icon">
                         <img src="/api/placeholder/50/50" alt="Cross-Functional Flexibility icon">
@@ -668,9 +620,6 @@
                     <h4 class="feature-title">Cross-Functional Flexibility</h4>
                     <p>Adapts across HR, L&D, and project management with modular workshop variations.</p>
                 </div>
-            </div>
-            
-            <div class="feature-cards" style="margin-top: 2rem;">
                 <div class="feature-card">
                     <div class="feature-icon">
                         <img src="/api/placeholder/50/50" alt="API-First Design icon">
@@ -678,7 +627,6 @@
                     <h4 class="feature-title">API-First Design</h4>
                     <p>Standardized APIs ensure secure, bidirectional data flow with major HR platforms like Workday and BambooHR.</p>
                 </div>
-                
                 <div class="feature-card">
                     <div class="feature-icon">
                         <img src="/api/placeholder/50/50" alt="Mobile-First UX icon">
@@ -686,7 +634,6 @@
                     <h4 class="feature-title">Mobile-First UX</h4>
                     <p>All elements are responsively designed for mobile, tablet, and desktop environments for seamless user experience.</p>
                 </div>
-                
                 <div class="feature-card">
                     <div class="feature-icon">
                         <img src="/api/placeholder/50/50" alt="AI-Augmented Coaching icon">
