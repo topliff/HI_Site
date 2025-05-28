@@ -400,6 +400,47 @@
             height: 60px;
             object-fit: contain;
         }
+
+        /* Popup styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1001;
+            overflow-y: auto;
+        }
+
+        .popup-content {
+            position: relative;
+            background-color: var(--white);
+            margin: 5% auto;
+            padding: 1rem;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .close-popup {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text);
+            z-index: 1002;
+            line-height: 1;
+        }
+
+        .popup-iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
     </style>
 </head>
 <body>
@@ -414,7 +455,7 @@
                     <a href="workshops.html">Workshops</a>
                     <a href="approach.html">Our Approach</a>
                     <a href="concepts.html">Key Concepts</a>
-                    <a href="mailto:esbin@5x5teams.com">Contact</a>
+                    <a href="#" id="contact-link">Contact</a>
                 </div>
             </nav>
         </div>
@@ -481,7 +522,7 @@
                     </div>
                     
                     <div style="text-align: center;">
-                        <a href="mailto:esbin@5x5teams.com" class="btn">Request a Demo</a>
+                        <a href="#" class="btn demo-link">Request a Demo</a>
                     </div>
                 </div>
             </div>
@@ -542,7 +583,7 @@
                     </div>
                     
                     <div style="text-align: center;">
-                        <a href="mailto:esbin@5x5teams.com" class="btn">Request a Demo</a>
+                        <a href="#" class="btn demo-link">Request a Demo</a>
                     </div>
                 </div>
             </div>
@@ -583,7 +624,7 @@
                     </div>
                     
                     <div style="text-align: center;">
-                        <a href="mailto:esbin@5x5teams.com" class="btn">Learn More About TARO</a>
+                        <a href="#" class="btn demo-link">Learn More About TARO</a>
                     </div>
                 </div>
             </div>
@@ -594,7 +635,7 @@
         <div class="container">
             <h2>Ready to Transform Your Teams?</h2>
             <p>Our workshops can be delivered in various formats to suit your organization's needs—from in-person sessions to fully digital experiences.</p>
-            <a href="mailto:esbin@5x5teams.com" class="btn btn-white">Schedule a Demo Session</a>
+            <a href="#" class="btn btn-white demo-link">Schedule a Demo Session</a>
         </div>
     </section>
 
@@ -607,10 +648,45 @@
                 <a href="workshops.html">Workshops</a>
                 <a href="approach.html">Our Approach</a>
                 <a href="concepts.html">Key Concepts</a>
-                <a href="mailto:esbin@5x5teams.com">Contact</a>
+                <a href="#" id="footer-contact">Contact</a>
             </div>
             <p class="copyright">© 2025 Heliotrope Imaginal. All rights reserved.</p>
         </div>
     </footer>
+
+    <div id="contact-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <iframe src="https://form.jotform.com/251469357689173" class="popup-iframe" id="contact-form-iframe"></iframe>
+        </div>
+    </div>
+
+    <script>
+        const contactLink = document.getElementById('contact-link');
+        const demoLinks = document.querySelectorAll('.demo-link');
+        const footerContact = document.getElementById('footer-contact');
+        const popup = document.getElementById('contact-popup');
+        const closeBtn = document.querySelector('.close-popup');
+
+        [contactLink, ...demoLinks, footerContact].forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                popup.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            popup.style.display = 'none';
+            document.body.style.overflow = '';
+        });
+
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                popup.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
 </body>
 </html>

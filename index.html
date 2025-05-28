@@ -354,6 +354,46 @@
             margin-top: 3rem;
         }
         
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1001;
+            overflow-y: auto;
+        }
+
+        .popup-content {
+            position: relative;
+            background-color: var(--white);
+            margin: 5% auto;
+            padding: 1rem;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .close-popup {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text);
+            z-index: 1002;
+            line-height: 1;
+        }
+
+        .popup-iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -505,6 +545,11 @@
         const popup = document.getElementById('contact-popup');
         const closeBtn = document.querySelector('.close-popup');
 
+        function closePopup() {
+            popup.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
         [contactLink, demoLink, footerContact].forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -513,15 +558,21 @@
             });
         });
 
-        closeBtn.addEventListener('click', () => {
-            popup.style.display = 'none';
-            document.body.style.overflow = '';
-        });
+        closeBtn.addEventListener('click', closePopup);
 
         popup.addEventListener('click', (e) => {
             if (e.target === popup) {
-                popup.style.display = 'none';
-                document.body.style.overflow = '';
+                closePopup();
+            }
+        });
+
+        // Listen for messages from the JotForm iframe
+        window.addEventListener('message', function(event) {
+            // Verify the message is from JotForm
+            if (event.origin.includes('jotform.com')) {
+                if (event.data === 'closePopup') {
+                    closePopup();
+                }
             }
         });
     </script>
