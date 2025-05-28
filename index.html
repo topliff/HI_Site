@@ -544,10 +544,20 @@
         const footerContact = document.getElementById('footer-contact');
         const popup = document.getElementById('contact-popup');
         const closeBtn = document.querySelector('.close-popup');
+        const formIframe = document.getElementById('contact-form-iframe');
 
         function closePopup() {
             popup.style.display = 'none';
             document.body.style.overflow = '';
+        }
+
+        // Check if we're returning from form submission
+        if (window.location.hash === '#thankyou') {
+            document.addEventListener('DOMContentLoaded', function() {
+                popup.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                formIframe.src = 'thank-you.html';
+            });
         }
 
         [contactLink, demoLink, footerContact].forEach(link => {
@@ -563,16 +573,6 @@
         popup.addEventListener('click', (e) => {
             if (e.target === popup) {
                 closePopup();
-            }
-        });
-
-        // Listen for messages from the JotForm iframe
-        window.addEventListener('message', function(event) {
-            // Verify the message is from JotForm
-            if (event.origin.includes('jotform.com')) {
-                if (event.data === 'closePopup') {
-                    closePopup();
-                }
             }
         });
     </script>
