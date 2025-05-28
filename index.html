@@ -363,7 +363,6 @@
             height: 100%;
             background-color: rgba(0,0,0,0.5);
             z-index: 1001;
-            overflow-y: auto;
         }
 
         .popup-content {
@@ -375,17 +374,6 @@
             max-width: 800px;
             border-radius: 20px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        .close-popup {
-            position: absolute;
-            right: 1rem;
-            top: 1rem;
-            font-size: 2rem;
-            cursor: pointer;
-            color: var(--text);
-            z-index: 1002;
-            line-height: 1;
         }
 
         .popup-iframe {
@@ -533,7 +521,6 @@
 
     <div id="contact-popup" class="popup">
         <div class="popup-content">
-            <span class="close-popup">&times;</span>
             <iframe src="https://form.jotform.com/251469357689173" class="popup-iframe" id="contact-form-iframe"></iframe>
         </div>
     </div>
@@ -543,37 +530,14 @@
         const demoLink = document.getElementById('demo-link');
         const footerContact = document.getElementById('footer-contact');
         const popup = document.getElementById('contact-popup');
-        const closeBtn = document.querySelector('.close-popup');
         const formIframe = document.getElementById('contact-form-iframe');
-
-        function closePopup() {
-            popup.style.display = 'none';
-            document.body.style.overflow = '';
-        }
-
-        // Check if we're returning from form submission
-        if (window.location.hash === '#thankyou') {
-            document.addEventListener('DOMContentLoaded', function() {
-                popup.style.display = 'block';
-                document.body.style.overflow = 'hidden';
-                formIframe.src = 'thank-you.html';
-            });
-        }
 
         [contactLink, demoLink, footerContact].forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 popup.style.display = 'block';
-                document.body.style.overflow = 'hidden';
+                formIframe.src = 'https://form.jotform.com/251469357689173';
             });
-        });
-
-        closeBtn.addEventListener('click', closePopup);
-
-        popup.addEventListener('click', (e) => {
-            if (e.target === popup) {
-                closePopup();
-            }
         });
     </script>
 </body>
