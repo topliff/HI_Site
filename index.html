@@ -14,6 +14,10 @@
             --white: #ffffff;
             --dark: #222222;
             --gradient: linear-gradient(135deg, var(--primary), #4a3e9b);
+            --indigo: #4f46e5;
+            --indigo-light: #eef2ff;
+            --purple: #9333ea;
+            --purple-light: #faf5ff;
         }
         
         * {
@@ -382,29 +386,179 @@
             border: none;
         }
 
+        /* Workshop App Styles */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--indigo);
+            color: var(--white);
+            border-radius: 8px;
+        }
+
+        .btn-primary:hover {
+            background: #4338ca;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+        }
+
+        .btn-outline {
+            background: var(--white);
+            color: var(--indigo);
+            border: 2px solid var(--indigo);
+            border-radius: 8px;
+        }
+
+        .btn-outline:hover {
+            background: var(--indigo-light);
+            transform: translateY(-2px);
+        }
+
+        .workshops-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .workshop-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .workshop-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+        }
+
+        .workshop-card.indigo {
+            border-color: var(--indigo-light);
+        }
+
+        .workshop-card.purple {
+            border-color: var(--purple-light);
+        }
+
+        .workshop-logo {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .workshop-logo img {
+            height: 80px;
+            width: auto;
+        }
+
+        .workshop-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .workshop-subtitle.indigo {
+            color: var(--indigo);
+        }
+
+        .workshop-subtitle.purple {
+            color: var(--purple);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .feature-icon-circle {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .feature-icon-circle.indigo {
+            background: var(--indigo-light);
+            color: var(--indigo);
+        }
+
+        .feature-icon-circle.purple {
+            background: var(--purple-light);
+            color: var(--purple);
+        }
+
+        .feature-icon-circle svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .feature-content strong {
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .feature-content {
+            color: var(--text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
-            
+
             .hero h1 {
                 font-size: 2.2rem;
             }
-            
+
             .hero p {
                 font-size: 1rem;
             }
-            
+
             .section-title h2 {
                 font-size: 2rem;
             }
-            
+
             .feature {
                 flex: 1 1 100%;
             }
-            
+
             .challenge {
                 padding: 2rem 1.5rem;
+            }
+
+            .workshops-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
             }
         }
     </style>
@@ -421,7 +575,6 @@
                     <a href="workshops.html">Workshops</a>
                     <a href="approach.html">Our Approach</a>
                     <a href="concepts.html">Key Concepts</a>
-                    <a href="app.html">App</a>
                     <a href="#" id="contact-link">Contact</a>
                 </div>
             </nav>
@@ -430,9 +583,161 @@
 
     <section class="hero">
         <div class="container hero-content">
-            <h1>Professional Growth.<br>Team Dynamics.<br>Organizational Imagination.</h1>
-            <p>Rebuild human foundations in workplaces through our transformative workshops designed for the AI era. Strengthen teams, foster innovation, and revitalize imagination.</p>
-            <a href="workshops.html" class="btn">Explore Our Workshops</a>
+            <h1>Welcome to the Heliotrope Imaginal Workshops</h1>
+            <p>Transformative learning experiences grounded in research-backed psychology and neuroscience, drawing from thousands of years of human wisdom.</p>
+
+            <div class="btn-group">
+                <a href="https://auth.heliotropeimaginal.com/authorize?response_type=code&client_id=c28c7gpoPuIrmPrP85NMqtCYhige5Qd9&redirect_uri=https://app2.heliotropeimaginal.com/auth/callback&scope=openid%20profile%20email" class="btn btn-primary">Login</a>
+                <a href="https://app2.heliotropeimaginal.com/register" class="btn btn-outline">I have an invite code</a>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 6rem 0; background: var(--white);">
+        <div class="container">
+            <div class="workshops-grid">
+                <!-- AllStarTeams Card -->
+                <div class="workshop-card indigo">
+                    <div class="workshop-logo">
+                        <img src="./images/all-star-teams-logo-250px.png" alt="AllStarTeams">
+                    </div>
+                    <p class="workshop-subtitle indigo">Individual & Team Workshop</p>
+
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <span class="feature-icon-circle indigo">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div class="feature-content">
+                                <strong>Build Self-Awareness</strong> through five strengths: imagining, thinking, planning, acting, and feeling.
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon-circle indigo">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div class="feature-content">
+                                <strong>Identify Flow State</strong> when performing at your peak and recreate it on demand.
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon-circle indigo">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div class="feature-content">
+                                <strong>Enhance Wellbeing</strong> by reflecting on your current state and how to reach an optimal one.
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon-circle indigo">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div class="feature-content">
+                                <strong>Envision Future Growth</strong> to activate deep learning and development.
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon-circle indigo">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div class="feature-content">
+                                <strong>Build Exceptional Teams</strong> through strengths-based fusion mapping and mutual understanding.
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon-circle indigo">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div class="feature-content">
+                                <strong>Humanistic AI</strong> provides supplementary coaching and analytics.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Imaginal Agility Card -->
+                <div class="workshop-card purple">
+                    <div class="workshop-logo">
+                        <img src="./images/imaginal_agility_logo_nobkgrd.png" alt="Imaginal Agility">
+                    </div>
+                    <p class="workshop-subtitle purple">Individual & Team Workshop</p>
+
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <span class="feature-icon-circle purple">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div class="feature-content">
+                                <strong>Develop Your Imagination</strong> as a core strategic capability for growth and change.
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon-circle purple">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div class="feature-content">
+                                <strong>Learn The I4C Model</strong> to enhance your curiosity, caring, creativity, and courage.
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon-circle purple">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div class="feature-content">
+                                <strong>Climb the Ladder of Imagination</strong> through structured visioning and creative problem-solving.
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon-circle purple">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div class="feature-content">
+                                <strong>Elevate Your HaiQ</strong> (Human-AI Collaboration Quotient) for the future workforce.
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon-circle purple">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div class="feature-content">
+                                <strong>Grow Return on Imagination</strong> (ROI 2.0) at scale across teams and organizations.
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon-circle purple">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div class="feature-content">
+                                <strong>Humanistic AI</strong> provides supplementary coaching and analytics.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -514,7 +819,6 @@
                 <a href="workshops.html">Workshops</a>
                 <a href="approach.html">Our Approach</a>
                 <a href="concepts.html">Key Concepts</a>
-                <a href="app.html">App</a>
                 <a href="#" id="footer-contact">Contact</a>
             </div>
             <p class="copyright">© 2025 Heliotrope Imaginal. All rights reserved.</p>
