@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshops App | Heliotrope Imaginal</title>
+    <style>
+        :root {
+            --primary: #6a5acd;
+            --primary-light: #c3bef0;
+            --secondary: #ef6c00;
+            --text: #333333;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --dark: #222222;
+            --gradient: linear-gradient(135deg, var(--primary), #4a3e9b);
+            --indigo: #4f46e5;
+            --indigo-light: #eef2ff;
+            --purple: #9333ea;
+            --purple-light: #faf5ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: var(--white);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: auto;
+            height: 48px;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        main {
+            margin-top: 72px;
+            padding: 4rem 0;
+            min-height: calc(100vh - 72px - 200px);
+        }
+
+        .app-hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .app-hero h1 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .app-hero p {
+            font-size: 1.2rem;
+            color: var(--text);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--indigo);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #4338ca;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+        }
+
+        .btn-outline {
+            background: var(--white);
+            color: var(--indigo);
+            border: 2px solid var(--indigo);
+        }
+
+        .btn-outline:hover {
+            background: var(--indigo-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-video {
+            background: #dc2626;
+            color: var(--white);
+        }
+
+        .btn-video:hover {
+            background: #b91c1c;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(220, 38, 38, 0.3);
+        }
+
+        .workshops-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .workshop-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .workshop-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+        }
+
+        .workshop-card.indigo {
+            border-color: var(--indigo-light);
+        }
+
+        .workshop-card.purple {
+            border-color: var(--purple-light);
+        }
+
+        .workshop-logo {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .workshop-logo img {
+            height: 80px;
+            width: auto;
+        }
+
+        .workshop-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .workshop-subtitle.indigo {
+            color: var(--indigo);
+        }
+
+        .workshop-subtitle.purple {
+            color: var(--purple);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .feature-icon.indigo {
+            background: var(--indigo-light);
+            color: var(--indigo);
+        }
+
+        .feature-icon.purple {
+            background: var(--purple-light);
+            color: var(--purple);
+        }
+
+        .feature-icon svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .feature-content strong {
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .feature-content {
+            color: var(--text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .video-section {
+            text-align: center;
+            background: var(--light-bg);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .video-section h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .video-section p {
+            font-size: 1.1rem;
+            color: var(--text);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .why-section {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .why-section h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .why-section p {
+            font-size: 1.1rem;
+            color: var(--text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            margin-bottom: 2rem;
+            display: inline-block;
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-light);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .app-hero h1 {
+                font-size: 2rem;
+            }
+
+            .app-hero p {
+                font-size: 1rem;
+            }
+
+            .workshops-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <img src="./images/HI_logo_horiz.png" alt="HeliotropeImaginal Logo" class="logo-img">
+                </a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="workshops.html">Workshops</a>
+                    <a href="approach.html">Our Approach</a>
+                    <a href="concepts.html">Key Concepts</a>
+                    <a href="app.html">App</a>
+                    <a href="#" id="contact-link">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="app-hero">
+                <h1>Welcome to the Heliotrope Imaginal Workshops</h1>
+                <p>Transformative learning experiences grounded in research-backed psychology and neuroscience, drawing from thousands of years of human wisdom.</p>
+            </div>
+
+            <div class="btn-group">
+                <a href="#login" class="btn btn-primary">Login</a>
+                <a href="#register" class="btn btn-outline">I have an invite code</a>
+            </div>
+
+            <div class="workshops-grid">
+                <!-- AllStarTeams Card -->
+                <div class="workshop-card indigo">
+                    <div class="workshop-logo">
+                        <img src="./images/all-star-teams-logo-250px.png" alt="AllStarTeams">
+                    </div>
+                    <p class="workshop-subtitle indigo">Individual & Team Workshop</p>
+
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <span class="feature-icon indigo">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div class="feature-content">
+                                <strong>Build Self-Awareness</strong> through five strengths: imagining, thinking, planning, acting, and feeling.
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon indigo">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div class="feature-content">
+                                <strong>Identify Flow State</strong> when performing at your peak and recreate it on demand.
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon indigo">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div class="feature-content">
+                                <strong>Enhance Wellbeing</strong> by reflecting on your current state and how to reach an optimal one.
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon indigo">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div class="feature-content">
+                                <strong>Envision Future Growth</strong> to activate deep learning and development.
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon indigo">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div class="feature-content">
+                                <strong>Build Exceptional Teams</strong> through strengths-based fusion mapping and mutual understanding.
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon indigo">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div class="feature-content">
+                                <strong>Humanistic AI</strong> provides supplementary coaching and analytics.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Imaginal Agility Card -->
+                <div class="workshop-card purple">
+                    <div class="workshop-logo">
+                        <img src="./images/imaginal_agility_logo_nobkgrd.png" alt="Imaginal Agility">
+                    </div>
+                    <p class="workshop-subtitle purple">Individual & Team Workshop</p>
+
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <span class="feature-icon purple">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div class="feature-content">
+                                <strong>Develop Your Imagination</strong> as a core strategic capability for growth and change.
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon purple">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div class="feature-content">
+                                <strong>Learn The I4C Model</strong> to enhance your curiosity, caring, creativity, and courage.
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon purple">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div class="feature-content">
+                                <strong>Climb the Ladder of Imagination</strong> through structured visioning and creative problem-solving.
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon purple">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div class="feature-content">
+                                <strong>Elevate Your HaiQ</strong> (Human-AI Collaboration Quotient) for the future workforce.
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon purple">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div class="feature-content">
+                                <strong>Grow Return on Imagination</strong> (ROI 2.0) at scale across teams and organizations.
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon purple">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </span>
+                            <div class="feature-content">
+                                <strong>Humanistic AI</strong> provides supplementary coaching and analytics.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="video-section">
+                <h3>See what our workshops are all about!</h3>
+                <p>Experience the transformative power of our workshops and discover how they can help unlock your team's full potential.</p>
+                <a href="https://www.youtube.com/watch?v=LkoL6MErRkg" target="_blank" class="btn btn-video">
+                    ▶ Watch Workshop Overview
+                </a>
+            </div>
+
+            <div class="why-section">
+                <h3>Why Choose Heliotrope Imaginal's Platform?</h3>
+                <p>Our science-backed assessments and workshops have helped thousands of professionals and teams unlock their full potential through personalized insights and guided growth.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <a href="#" class="footer-logo">Heliotrope Imaginal</a>
+            <p>Strengthening essential human capabilities for an AI-shaped future</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="workshops.html">Workshops</a>
+                <a href="approach.html">Our Approach</a>
+                <a href="concepts.html">Key Concepts</a>
+                <a href="app.html">App</a>
+                <a href="#" id="footer-contact">Contact</a>
+            </div>
+            <p class="copyright">© 2025 Heliotrope Imaginal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="contact-popup" class="popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1001;">
+        <div class="popup-content" style="position: relative; background-color: white; margin: 5% auto; padding: 1rem; width: 90%; max-width: 800px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+            <iframe src="https://form.jotform.com/251469357689173" style="width: 100%; height: 600px; border: none;" id="contact-form-iframe"></iframe>
+        </div>
+    </div>
+
+    <script>
+        const contactLink = document.getElementById('contact-link');
+        const footerContact = document.getElementById('footer-contact');
+        const popup = document.getElementById('contact-popup');
+        const formIframe = document.getElementById('contact-form-iframe');
+
+        [contactLink, footerContact].forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                popup.style.display = 'block';
+                formIframe.src = 'https://form.jotform.com/251469357689173';
+            });
+        });
+
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                popup.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
