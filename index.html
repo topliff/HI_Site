@@ -606,10 +606,10 @@
                     <img src="./images/HI_logo_horiz.png" alt="HeliotropeImaginal Logo" class="logo-img">
                 </a>
                 <div class="nav-links">
-                    <a href="index.html">Home</a>
+                    <!-- <a href="index.html">Home</a>
                     <a href="workshops.html">Workshops</a>
                     <a href="approach.html">Our Approach</a>
-                    <a href="concepts.html">Key Concepts</a>
+                    <a href="concepts.html">Key Concepts</a> -->
                     <a href="#" id="contact-link">Contact</a>
                 </div>
             </nav>
@@ -864,7 +864,17 @@
     <div id="contact-popup" class="popup">
         <div class="popup-content">
             <span class="popup-close" id="contact-close">&times;</span>
-            <iframe src="https://form.jotform.com/251469357689173" class="popup-iframe" id="contact-form-iframe"></iframe>
+            <div class="popup-iframe-wrapper">
+                <iframe
+                    id="JotFormIFrame-252903885565166"
+                    title="Contact Form"
+                    allowtransparency="true"
+                    allow="geolocation; microphone; camera; fullscreen; payment"
+                    src="https://form.jotform.com/252903885565166"
+                    frameborder="0"
+                    scrolling="no"
+                ></iframe>
+            </div>
         </div>
     </div>
 
@@ -892,14 +902,12 @@
         const demoLink = document.getElementById('demo-link');
         const footerContact = document.getElementById('footer-contact');
         const contactPopup = document.getElementById('contact-popup');
-        const contactFormIframe = document.getElementById('contact-form-iframe');
         const contactClose = document.getElementById('contact-close');
 
         [contactLink, demoLink, footerContact].forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 contactPopup.style.display = 'block';
-                contactFormIframe.src = 'https://form.jotform.com/251469357689173';
             });
         });
 
@@ -934,7 +942,8 @@
             }
         });
 
-        // Initialize JotForm embed handler for waitlist
+        // Initialize JotForm embed handlers
+        window.jotformEmbedHandler("iframe[id='JotFormIFrame-252903885565166']", "https://form.jotform.com/");
         window.jotformEmbedHandler("iframe[id='JotFormIFrame-252896933804066']", "https://form.jotform.com/");
     </script>
 </body>
