@@ -384,6 +384,19 @@
             border: none;
         }
 
+        .popup-iframe-wrapper {
+            width: 100%;
+            height: 550px;
+            overflow: hidden;
+        }
+
+        .popup-iframe-wrapper iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            margin-top: 0;
+        }
+
         /* Workshop App Styles */
         .btn-group {
             display: flex;
@@ -832,16 +845,17 @@
 
     <div id="waitlist-popup" class="popup">
         <div class="popup-content">
-            <iframe
-                id="JotFormIFrame-252896933804066"
-                title="Waitlist Form"
-                allowtransparency="true"
-                allow="geolocation; microphone; camera; fullscreen; payment"
-                src="https://form.jotform.com/252896933804066"
-                frameborder="0"
-                class="popup-iframe"
-                scrolling="no"
-            ></iframe>
+            <div class="popup-iframe-wrapper">
+                <iframe
+                    id="JotFormIFrame-252896933804066"
+                    title="Waitlist Form"
+                    allowtransparency="true"
+                    allow="geolocation; microphone; camera; fullscreen; payment"
+                    src="https://form.jotform.com/252896933804066"
+                    frameborder="0"
+                    scrolling="no"
+                ></iframe>
+            </div>
         </div>
     </div>
 
