@@ -397,6 +397,30 @@
             margin-top: 0;
         }
 
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 32px;
+            height: 32px;
+            background: var(--white);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--text);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .popup-close:hover {
+            background: var(--light-bg);
+            transform: scale(1.1);
+        }
+
         /* Workshop App Styles */
         .btn-group {
             display: flex;
@@ -839,12 +863,14 @@
 
     <div id="contact-popup" class="popup">
         <div class="popup-content">
+            <span class="popup-close" id="contact-close">&times;</span>
             <iframe src="https://form.jotform.com/251469357689173" class="popup-iframe" id="contact-form-iframe"></iframe>
         </div>
     </div>
 
     <div id="waitlist-popup" class="popup">
         <div class="popup-content">
+            <span class="popup-close" id="waitlist-close">&times;</span>
             <div class="popup-iframe-wrapper">
                 <iframe
                     id="JotFormIFrame-252896933804066"
@@ -867,6 +893,7 @@
         const footerContact = document.getElementById('footer-contact');
         const contactPopup = document.getElementById('contact-popup');
         const contactFormIframe = document.getElementById('contact-form-iframe');
+        const contactClose = document.getElementById('contact-close');
 
         [contactLink, demoLink, footerContact].forEach(link => {
             link.addEventListener('click', (e) => {
@@ -879,12 +906,22 @@
         // Waitlist popup
         const waitlistPopup = document.getElementById('waitlist-popup');
         const waitlistLinks = document.querySelectorAll('.waitlist-link');
+        const waitlistClose = document.getElementById('waitlist-close');
 
         waitlistLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 waitlistPopup.style.display = 'block';
             });
+        });
+
+        // Close button handlers
+        contactClose.addEventListener('click', () => {
+            contactPopup.style.display = 'none';
+        });
+
+        waitlistClose.addEventListener('click', () => {
+            waitlistPopup.style.display = 'none';
         });
 
         // Close popups when clicking outside
