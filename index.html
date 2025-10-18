@@ -587,6 +587,7 @@
             <div class="btn-group">
                 <a href="https://auth.heliotropeimaginal.com/authorize?response_type=code&client_id=c28c7gpoPuIrmPrP85NMqtCYhige5Qd9&redirect_uri=https://app2.heliotropeimaginal.com/auth/callback&scope=openid%20profile%20email" class="btn btn-primary">Login</a>
                 <a href="https://app2.heliotropeimaginal.com/register" class="btn btn-outline">I have an invite code</a>
+                <a href="#" class="btn btn-outline waitlist-link">Join the Waitlist</a>
             </div>
         </div>
     </section>
@@ -829,20 +830,61 @@
         </div>
     </div>
 
+    <div id="waitlist-popup" class="popup">
+        <div class="popup-content">
+            <iframe
+                id="JotFormIFrame-252896933804066"
+                title="Waitlist Form"
+                allowtransparency="true"
+                allow="geolocation; microphone; camera; fullscreen; payment"
+                src="https://form.jotform.com/252896933804066"
+                frameborder="0"
+                class="popup-iframe"
+                scrolling="no"
+            ></iframe>
+        </div>
+    </div>
+
+    <script src='https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js'></script>
     <script>
+        // Contact form popup
         const contactLink = document.getElementById('contact-link');
         const demoLink = document.getElementById('demo-link');
         const footerContact = document.getElementById('footer-contact');
-        const popup = document.getElementById('contact-popup');
-        const formIframe = document.getElementById('contact-form-iframe');
+        const contactPopup = document.getElementById('contact-popup');
+        const contactFormIframe = document.getElementById('contact-form-iframe');
 
         [contactLink, demoLink, footerContact].forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                popup.style.display = 'block';
-                formIframe.src = 'https://form.jotform.com/251469357689173';
+                contactPopup.style.display = 'block';
+                contactFormIframe.src = 'https://form.jotform.com/251469357689173';
             });
         });
+
+        // Waitlist popup
+        const waitlistPopup = document.getElementById('waitlist-popup');
+        const waitlistLinks = document.querySelectorAll('.waitlist-link');
+
+        waitlistLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                waitlistPopup.style.display = 'block';
+            });
+        });
+
+        // Close popups when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === contactPopup) {
+                contactPopup.style.display = 'none';
+            }
+            if (e.target === waitlistPopup) {
+                waitlistPopup.style.display = 'none';
+            }
+        });
+
+        // Initialize JotForm embed handler for waitlist
+        window.jotformEmbedHandler("iframe[id='JotFormIFrame-252896933804066']", "https://form.jotform.com/");
     </script>
 </body>
 </html>
