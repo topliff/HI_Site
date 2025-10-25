@@ -421,6 +421,70 @@
             transform: scale(1.1);
         }
 
+        /* Video Button Styles */
+        .btn-video {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #dc2626;
+            color: var(--white);
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.125rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+        }
+
+        .btn-video:hover {
+            background: #b91c1c;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4);
+        }
+
+        .btn-video svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .video-section {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        /* Video Modal Styles */
+        .video-popup-content {
+            position: relative;
+            background-color: var(--dark);
+            margin: 5% auto;
+            padding: 0;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+        }
+
         /* Workshop App Styles */
         .btn-group {
             display: flex;
@@ -618,14 +682,25 @@
 
     <section class="hero">
         <div class="container hero-content">
-            <h1>Welcome to the Heliotrope Imaginal Workshops</h1>
-            <p>Transformative learning experiences grounded in research-backed psychology and neuroscience, drawing from thousands of years of human wisdom.</p>
+            <h1>Welcome to the Heliotrope Imaginal. Microcourse-Workshops</h1>
+            <p>Empowering Human Capabilities for the AI Era</p>
 
             <div class="btn-group">
                 <a href="https://auth.heliotropeimaginal.com/authorize?response_type=code&client_id=c28c7gpoPuIrmPrP85NMqtCYhige5Qd9&redirect_uri=https://app2.heliotropeimaginal.com/auth/callback&scope=openid%20profile%20email" class="btn btn-primary">Login</a>
                 <a href="https://app2.heliotropeimaginal.com/register" class="btn btn-outline">I have an invite code</a>
                 <a href="#" class="btn btn-outline waitlist-link">Join the Waitlist</a>
             </div>
+        </div>
+    </section>
+
+    <section class="video-section" style="background: var(--white);">
+        <div class="container">
+            <button class="btn-video" id="video-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="6 3 20 12 6 21 6 3"></polygon>
+                </svg>
+                Watch Workshop Overview
+            </button>
         </div>
     </section>
 
@@ -895,6 +970,21 @@
         </div>
     </div>
 
+    <div id="video-popup" class="popup">
+        <div class="video-popup-content">
+            <span class="popup-close" id="video-close">&times;</span>
+            <div class="video-wrapper">
+                <iframe
+                    id="video-iframe"
+                    src=""
+                    title="Workshop Overview Video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                ></iframe>
+            </div>
+        </div>
+    </div>
+
     <script src='https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js'></script>
     <script>
         // Contact form popup
@@ -923,6 +1013,17 @@
             });
         });
 
+        // Video popup
+        const videoBtn = document.getElementById('video-btn');
+        const videoPopup = document.getElementById('video-popup');
+        const videoClose = document.getElementById('video-close');
+        const videoIframe = document.getElementById('video-iframe');
+
+        videoBtn.addEventListener('click', () => {
+            videoPopup.style.display = 'block';
+            videoIframe.src = 'https://www.youtube.com/embed/LkoL6MErRkg?autoplay=1';
+        });
+
         // Close button handlers
         contactClose.addEventListener('click', () => {
             contactPopup.style.display = 'none';
@@ -932,6 +1033,11 @@
             waitlistPopup.style.display = 'none';
         });
 
+        videoClose.addEventListener('click', () => {
+            videoPopup.style.display = 'none';
+            videoIframe.src = ''; // Stop video when closing
+        });
+
         // Close popups when clicking outside
         window.addEventListener('click', (e) => {
             if (e.target === contactPopup) {
@@ -939,6 +1045,10 @@
             }
             if (e.target === waitlistPopup) {
                 waitlistPopup.style.display = 'none';
+            }
+            if (e.target === videoPopup) {
+                videoPopup.style.display = 'none';
+                videoIframe.src = ''; // Stop video when closing
             }
         });
 
