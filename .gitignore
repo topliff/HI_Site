@@ -9,3 +9,17 @@ Thumbs.db
 
 # Landing page package
 landing-page-package/
+
+# Old site backup (git history preserves this)
+old site/
+
+# Reference documents
+*.pdf
+heliotrope_imaginal_website_gamma_spec.md
+
+# IDE and editor files
+.claude/
+.vscode/
+*.swp
+*.swo
+*~
