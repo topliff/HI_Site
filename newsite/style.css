@@ -1,0 +1,419 @@
+/* ============================================
+   Heliotrope Imaginal — Style Sheet
+   Theme: Serene (light, clean, navy + warm white)
+   ============================================ */
+
+/* --- CSS Custom Properties --- */
+:root {
+  --color-navy: #1A2D7A;
+  --color-dark-text: #002253;
+  --color-body-text: #3B3535;
+  --color-bg: rgb(231, 238, 249);
+  --color-card: rgb(255, 250, 250);
+  --color-card-overlay: rgba(255, 250, 250, 0.85);
+  --color-grid-cell: #F5F5F5;
+  --color-label-bg: #D5DCF6;
+  --color-label-text: #1A2D7A;
+  --color-divider: rgba(59, 53, 53, 0.5);
+  --color-white: #ffffff;
+  --font-heading: 'Alexandria', sans-serif;
+  --font-body: 'Sora', sans-serif;
+  --max-width: 860px;
+  --section-padding: 72px 0;
+  --card-radius: 12px;
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-body-text);
+  background-color: var(--color-bg);
+  background-image: url("images/field-with-sunflowers-against-blue-sky-beautiful-landscape-banner.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--color-navy);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--color-dark-text);
+  line-height: 1.3;
+}
+
+h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800; }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); font-weight: 700; margin-bottom: 16px; }
+h3 { font-size: 1.25rem; font-weight: 600; }
+h4 { font-size: 1.1rem; font-weight: 600; }
+
+p {
+  margin-bottom: 12px;
+}
+
+/* --- Layout --- */
+.page-wrapper {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  padding-top: 80px; /* offset for fixed navbar */
+}
+
+.card-section {
+  background: var(--color-card);
+  border-radius: var(--card-radius);
+  padding: 48px 40px;
+  margin-bottom: 24px;
+}
+
+/* --- Navbar --- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: rgba(255, 250, 250, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 12px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-logo {
+  height: 48px;
+  width: auto;
+}
+
+/* --- Labels / Badges --- */
+.label-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.label {
+  background: var(--color-label-bg);
+  color: var(--color-label-text);
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+/* --- Buttons --- */
+.button-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.btn {
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity 0.2s, transform 0.2s;
+  border: none;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.btn-solid {
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+
+.btn-outline {
+  background: var(--color-card);
+  border: 2px solid var(--color-body-text);
+  color: var(--color-body-text);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+  background-image: url("images/field-with-sunflowers-against-blue-sky-beautiful-landscape-banner.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.hero-overlay {
+  background: var(--color-card-overlay);
+  padding: 48px 40px;
+}
+
+.hero-logo {
+  width: 180px;
+  margin-bottom: 24px;
+}
+
+.hero-section h1 {
+  margin-bottom: 16px;
+}
+
+.hero-section h2 {
+  margin-top: 32px;
+  margin-bottom: 24px;
+}
+
+/* --- Program Grid (2-col) --- */
+.program-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.program-card {
+  background: var(--color-card);
+  border: 1px solid #e0e0e0;
+  border-radius: var(--card-radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.program-card img {
+  width: 120px;
+}
+
+.program-card .italic {
+  font-style: italic;
+  color: var(--color-body-text);
+  margin-bottom: 0;
+}
+
+.program-card a {
+  font-weight: 500;
+}
+
+/* --- Stat Cards (3-col) --- */
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  margin: 32px 0;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 24px 16px;
+}
+
+.stat-number {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  color: var(--color-navy);
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.stat-card h4 {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.stat-card p {
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+/* --- Video Section --- */
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-top: 24px;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* --- Facilitator Section --- */
+.facilitator-divider {
+  border: none;
+  height: 1px;
+  background: var(--color-divider);
+  margin: 32px 0;
+}
+
+.facilitator-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.facilitator-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.facilitator-bio h4 {
+  margin-bottom: 4px;
+}
+
+.facilitator-bio .italic {
+  font-style: italic;
+  color: var(--color-body-text);
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+.facilitator-bio .label-group {
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+.facilitator-bio a {
+  font-size: 0.9rem;
+}
+
+/* --- CTA Cards (3-col) --- */
+.cta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  margin: 32px 0;
+}
+
+.cta-card {
+  background: var(--color-grid-cell);
+  border-radius: var(--card-radius);
+  padding: 24px;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cta-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+
+.cta-card h4 {
+  color: var(--color-navy);
+  margin-bottom: 8px;
+}
+
+.cta-card p {
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+/* --- Footer --- */
+.footer {
+  text-align: center;
+  padding: 32px 24px;
+  font-size: 0.85rem;
+  color: var(--color-body-text);
+  opacity: 0.7;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .card-section {
+    padding: 32px 20px;
+  }
+
+  .hero-overlay {
+    padding: 32px 20px;
+  }
+
+  .program-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .facilitator-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .facilitator-photo {
+    max-width: 200px;
+  }
+
+  .cta-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar {
+    padding: 12px 20px;
+  }
+
+  .navbar-logo {
+    height: 36px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
+}
