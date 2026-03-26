@@ -120,8 +120,8 @@ p {
 }
 
 .btn-sm {
-  padding: 6px 16px;
-  font-size: 0.8rem;
+  padding: 4px 10px;
+  font-size: 0.48rem;
 }
 
 /* --- Labels / Badges --- */
@@ -422,7 +422,7 @@ p {
   }
 
   .btn-sm {
-    padding: 4px 10px;
-    font-size: 0.7rem;
+    padding: 2px 6px;
+    font-size: 0.42rem;
   }
 }
