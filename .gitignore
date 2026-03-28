@@ -16,6 +16,7 @@ old site/
 # Redesign working directories
 redesign/
 redesign2/
+newsite/
 
 # Reference documents
 *.pdf
