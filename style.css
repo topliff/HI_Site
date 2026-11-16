@@ -388,8 +388,69 @@ p {
   text-decoration: underline;
 }
 
+/* --- Legal pages (terms.html, privacy.html) --- */
+.legal .legal-meta {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-bottom: 32px;
+}
+
+.legal article h2 {
+  font-size: 1.35rem;
+  margin: 32px 0 12px;
+}
+
+.legal article h3 {
+  font-size: 1.05rem;
+  margin: 20px 0 8px;
+}
+
+.legal article ul {
+  margin: 0 0 12px 24px;
+}
+
+.legal article li {
+  margin-bottom: 6px;
+}
+
+.legal article a {
+  text-decoration: underline;
+}
+
+.legal article table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  margin: 8px 0 16px;
+}
+
+.legal article th,
+.legal article td {
+  text-align: left;
+  vertical-align: top;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.legal article th {
+  font-family: var(--font-heading);
+  color: var(--color-dark-text);
+}
+
+.legal mark {
+  background: #fdf0c4;
+  color: #6b4a00;
+  border-radius: 3px;
+  padding: 0 4px;
+}
+
 /* --- Responsive --- */
 @media (max-width: 768px) {
+  .legal article table {
+    display: block;
+    overflow-x: auto;
+  }
+
   .card-section {
     padding: 32px 20px;
   }
